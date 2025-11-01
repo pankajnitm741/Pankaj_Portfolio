@@ -6,5 +6,5 @@ import flowbiteReact from "flowbite-react/plugin/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), flowbiteReact()],
-  base: '/Pankaj_Portfolio_App/',
+  base: '/Pankaj_Portfolio/',
 })
