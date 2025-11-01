@@ -1,0 +1,302 @@
+/* Navbar Component CSS Module - Using Hybrid Unit Approach */
+
+/* CSS Custom Properties for Reusability */
+:root {
+  --navbar-height: 64px;
+  --navbar-padding: 32px;
+  --navbar-transition: all 0.3s ease;
+  --navbar-backdrop-blur: 12px;
+  
+  /* Background Colors */
+  --navbar-bg-transparent: rgba(15, 23, 42, 0.8);
+  --navbar-bg-scrolled: rgba(15, 23, 42, 0.9);
+  --navbar-border-color: rgba(71, 85, 105, 0.6);
+  
+  /* Brand Colors */
+  --navbar-brand-gradient-start: #14b8a6;
+  --navbar-brand-gradient-middle: #3b82f6;
+  --navbar-brand-gradient-end: #a855f7;
+  --navbar-brand-gradient-hover-start: #0d9488;
+  --navbar-brand-gradient-hover-middle: #2563eb;
+  --navbar-brand-gradient-hover-end: #9333ea;
+  
+  /* Button Colors */
+  --navbar-btn-active-color: #14b8a6;
+  --navbar-btn-active-bg: rgba(20, 184, 166, 0.1);
+  --navbar-btn-active-border: rgba(20, 184, 166, 0.3);
+  --navbar-btn-inactive-color: #9ca3af;
+  --navbar-btn-hover-color: #e5e7eb;
+  --navbar-btn-hover-bg: rgba(255, 255, 255, 0.05);
+  --navbar-btn-hover-border: rgba(255, 255, 255, 0.1);
+  
+  /* Mobile Menu Colors */
+  --navbar-mobile-btn-bg: #1f2937;
+  --navbar-mobile-btn-hover-bg: #374151;
+  --navbar-mobile-btn-color: #d1d5db;
+}
+
+/* Main Navigation Container */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: var(--navbar-transition);
+  border-bottom: 1px solid transparent;
+}
+
+.navbar.scrolled {
+  backdrop-filter: blur(var(--navbar-backdrop-blur));
+  border-bottom-color: var(--navbar-border-color);
+  background-color: var(--navbar-bg-scrolled);
+}
+
+.navbar.transparent {
+  background-color: var(--navbar-bg-transparent);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  padding: 0 var(--navbar-padding);
+}
+
+/* Brand/Logo */
+.brand {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding-left: 16px;
+}
+
+.brand:hover {
+  transform: scale(1.05);
+}
+
+.brandText {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--navbar-brand-gradient-start) 0%,
+    var(--navbar-brand-gradient-middle) 50%,
+    var(--navbar-brand-gradient-end) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: var(--navbar-transition);
+}
+
+.brand:hover .brandText {
+  background: linear-gradient(
+    135deg,
+    var(--navbar-brand-gradient-hover-start) 0%,
+    var(--navbar-brand-gradient-hover-middle) 50%,
+    var(--navbar-brand-gradient-hover-end) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex;
+  }
+}
+
+/* Navigation Buttons */
+.navBtn {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: var(--navbar-transition);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.navBtn.active {
+  color: var(--navbar-btn-active-color);
+  background-color: var(--navbar-btn-active-bg);
+  border-color: var(--navbar-btn-active-border);
+}
+
+.navBtn.inactive {
+  color: var(--navbar-btn-inactive-color);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.navBtn.inactive:hover {
+  color: var(--navbar-btn-hover-color);
+  background-color: var(--navbar-btn-hover-bg);
+  border-color: var(--navbar-btn-hover-border);
+}
+
+/* Remove all focus/active states - placed after other states for higher specificity */
+.navBtn:focus,
+.navBtn:focus-visible,
+.navBtn:active,
+.navBtn.active:focus,
+.navBtn.active:focus-visible,
+.navBtn.active:active,
+.navBtn.inactive:focus,
+.navBtn.inactive:focus-visible,
+.navBtn.inactive:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Ensure active state is preserved even after focus/click by using more specific selectors */
+.navBtn.active:focus,
+.navBtn.active:focus-visible,
+.navBtn.active:active {
+  color: var(--navbar-btn-active-color);
+  background-color: var(--navbar-btn-active-bg);
+  border-color: var(--navbar-btn-active-border);
+}
+
+/* Ensure inactive state is preserved even after focus/click */
+.navBtn.inactive:focus,
+.navBtn.inactive:focus-visible,
+.navBtn.inactive:active {
+  color: var(--navbar-btn-inactive-color);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* Mobile Menu Button */
+.mobileMenuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--navbar-mobile-btn-bg);
+  color: var(--navbar-mobile-btn-color);
+  border: none;
+  cursor: pointer;
+  transition: var(--navbar-transition);
+}
+
+.mobileMenuBtn:hover {
+  background-color: var(--navbar-mobile-btn-hover-bg);
+}
+
+@media (min-width: 768px) {
+  .mobileMenuBtn {
+    display: none;
+  }
+}
+
+.mobileMenuIcon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile Navigation Menu */
+.mobileNav {
+  padding: 16px;
+  background-color: var(--navbar-bg-scrolled);
+  border-top: 1px solid var(--navbar-border-color);
+}
+
+@media (min-width: 768px) {
+  .mobileNav {
+    display: none;
+  }
+}
+
+.mobileNavContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Mobile Navigation Buttons */
+.mobileNavBtn {
+  position: relative;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: left;
+  transition: var(--navbar-transition);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  outline: none;
+}
+
+.mobileNavBtn.active {
+  color: var(--navbar-btn-active-color);
+  background-color: var(--navbar-btn-active-bg);
+  border-color: var(--navbar-btn-active-border);
+}
+
+.mobileNavBtn.inactive {
+  color: var(--navbar-btn-inactive-color);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.mobileNavBtn.inactive:hover {
+  color: var(--navbar-btn-hover-color);
+  background-color: var(--navbar-btn-hover-bg);
+  border-color: var(--navbar-btn-hover-border);
+}
+
+/* Remove all focus/active states for mobile nav - placed after other states for higher specificity */
+.mobileNavBtn:focus,
+.mobileNavBtn:focus-visible,
+.mobileNavBtn:active,
+.mobileNavBtn.active:focus,
+.mobileNavBtn.active:focus-visible,
+.mobileNavBtn.active:active,
+.mobileNavBtn.inactive:focus,
+.mobileNavBtn.inactive:focus-visible,
+.mobileNavBtn.inactive:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Ensure active state is preserved even after focus/click by using more specific selectors */
+.mobileNavBtn.active:focus,
+.mobileNavBtn.active:focus-visible,
+.mobileNavBtn.active:active {
+  color: var(--navbar-btn-active-color);
+  background-color: var(--navbar-btn-active-bg);
+  border-color: var(--navbar-btn-active-border);
+}
+
+/* Ensure inactive state is preserved even after focus/click */
+.mobileNavBtn.inactive:focus,
+.mobileNavBtn.inactive:focus-visible,
+.mobileNavBtn.inactive:active {
+  color: var(--navbar-btn-inactive-color);
+  background-color: transparent;
+  border-color: transparent;
+}

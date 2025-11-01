@@ -1,0 +1,645 @@
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dynamic Gradient Animations */
+@keyframes gradient-pulse {
+  0% {
+    opacity: 0.3;
+    background: linear-gradient(45deg, #0891b2 0%, #06b6d4 20%, transparent 40%, transparent 60%, #ec4899 80%, #f472b6 100%);
+  }
+  16.67% {
+    opacity: 0.4;
+    background: linear-gradient(45deg, #0284c7 0%, #0ea5e9 20%, transparent 40%, transparent 60%, #e879f9 80%, #f0abfc 100%);
+  }
+  33.33% {
+    opacity: 0.5;
+    background: linear-gradient(45deg, #0369a1 0%, #0284c7 20%, transparent 40%, transparent 60%, #d946ef 80%, #e879f9 100%);
+  }
+  50% {
+    opacity: 0.6;
+    background: linear-gradient(45deg, #06b6d4 0%, #22d3ee 20%, transparent 40%, transparent 60%, #f472b6 80%, #fbbf24 100%);
+  }
+  66.67% {
+    opacity: 0.5;
+    background: linear-gradient(45deg, #0891b2 0%, #06b6d4 20%, transparent 40%, transparent 60%, #ec4899 80%, #f472b6 100%);
+  }
+  83.33% {
+    opacity: 0.4;
+    background: linear-gradient(45deg, #0c4a6e 0%, #0284c7 20%, transparent 40%, transparent 60%, #be185d 80%, #ec4899 100%);
+  }
+  100% {
+    opacity: 0.3;
+    background: linear-gradient(45deg, #0891b2 0%, #06b6d4 20%, transparent 40%, transparent 60%, #ec4899 80%, #f472b6 100%);
+  }
+}
+
+@keyframes gradient-slow {
+  0% {
+    background: linear-gradient(225deg, #6d28d9 0%, #8b5cf6 25%, transparent 50%, #1d4ed8 75%, #3b82f6 100%);
+    opacity: 0.2;
+  }
+  16.67% {
+    background: linear-gradient(225deg, #7c3aed 0%, #a855f7 25%, transparent 50%, #2563eb 75%, #60a5fa 100%);
+    opacity: 0.3;
+  }
+  33.33% {
+    background: linear-gradient(225deg, #8b5cf6 0%, #c084fc 25%, transparent 50%, #3b82f6 75%, #93c5fd 100%);
+    opacity: 0.4;
+  }
+  50% {
+    background: linear-gradient(225deg, #a855f7 0%, #d8b4fe 25%, transparent 50%, #60a5fa 75%, #dbeafe 100%);
+    opacity: 0.5;
+  }
+  66.67% {
+    background: linear-gradient(225deg, #8b5cf6 0%, #c084fc 25%, transparent 50%, #3b82f6 75%, #93c5fd 100%);
+    opacity: 0.4;
+  }
+  83.33% {
+    background: linear-gradient(225deg, #7c3aed 0%, #a855f7 25%, transparent 50%, #2563eb 75%, #60a5fa 100%);
+    opacity: 0.3;
+  }
+  100% {
+    background: linear-gradient(225deg, #6d28d9 0%, #8b5cf6 25%, transparent 50%, #1d4ed8 75%, #3b82f6 100%);
+    opacity: 0.2;
+  }
+}
+
+/* Dynamic Text Color Animations for Hero Section */
+@keyframes hero-text-primary {
+  0%, 100% {
+    color: #f1f5f9; /* slate-100 - good contrast with blue backgrounds */
+  }
+  12.5% {
+    color: #e2e8f0; /* slate-200 - slightly warmer for cyan backgrounds */
+  }
+  25% {
+    color: #f8fafc; /* slate-50 - brightest for darker blue backgrounds */
+  }
+  37.5% {
+    color: #f1f5f9; /* slate-100 - balanced for purple backgrounds */
+  }
+  50% {
+    color: #e2e8f0; /* slate-200 - softer for lighter purple backgrounds */
+  }
+  62.5% {
+    color: #f8fafc; /* slate-50 - high contrast for vibrant backgrounds */
+  }
+  75% {
+    color: #f1f5f9; /* slate-100 - consistent readability */
+  }
+  87.5% {
+    color: #e2e8f0; /* slate-200 - warm tone for transition */
+  }
+}
+
+@keyframes hero-text-secondary {
+  0%, 100% {
+    color: #cbd5e1; /* slate-300 - softer secondary text */
+  }
+  12.5% {
+    color: #94a3b8; /* slate-400 - more contrast with lighter backgrounds */
+  }
+  25% {
+    color: #e2e8f0; /* slate-200 - brighter for dark blue phases */
+  }
+  37.5% {
+    color: #cbd5e1; /* slate-300 - balanced for purple backgrounds */
+  }
+  50% {
+    color: #94a3b8; /* slate-400 - subtle for lighter backgrounds */
+  }
+  62.5% {
+    color: #e2e8f0; /* slate-200 - enhanced readability */
+  }
+  75% {
+    color: #cbd5e1; /* slate-300 - consistent secondary tone */
+  }
+  87.5% {
+    color: #94a3b8; /* slate-400 - smooth transition back */
+  }
+}
+
+@keyframes hero-text-accent {
+  0%, 100% {
+    color: #93c5fd; /* blue-300 - brighter and more visible */
+  }
+  12.5% {
+    color: #7dd3fc; /* sky-300 - lighter cyan for better visibility */
+  }
+  25% {
+    color: #60a5fa; /* blue-400 - strong contrast */
+  }
+  37.5% {
+    color: #c084fc; /* violet-400 - bright purple */
+  }
+  50% {
+    color: #d8b4fe; /* purple-300 - lighter purple for contrast */
+  }
+  62.5% {
+    color: #a5b4fc; /* indigo-300 - softer but visible */
+  }
+  75% {
+    color: #93c5fd; /* blue-300 - consistent visibility */
+  }
+  87.5% {
+    color: #7dd3fc; /* sky-300 - smooth transition back */
+  }
+}
+
+.animate-gradient-pulse {
+  animation: gradient-pulse 15s ease-in-out infinite;
+}
+
+.animate-gradient-slow {
+  animation: gradient-slow 45s ease-in-out infinite;
+}
+
+/* Dynamic Radial Gradient Animation for Real-time Color Changes */
+@keyframes radial-gradient-shift {
+  0% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(25, 199, 184));
+  }
+  2% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(27, 197, 185));
+  }
+  4% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(29, 195, 186));
+  }
+  6% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(31, 193, 187));
+  }
+  8% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(33, 191, 188));
+  }
+  10% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(35, 189, 189));
+  }
+  12% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(37, 187, 195));
+  }
+  14% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(39, 185, 200));
+  }
+  16% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(41, 183, 205));
+  }
+  18% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(43, 181, 210));
+  }
+  20% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(45, 179, 215));
+  }
+  22% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(47, 177, 220));
+  }
+  24% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(49, 175, 225));
+  }
+  26% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(51, 173, 230));
+  }
+  28% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(53, 171, 235));
+  }
+  30% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(55, 169, 240));
+  }
+  32% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(59, 165, 242));
+  }
+  34% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(63, 161, 244));
+  }
+  36% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(67, 157, 246));
+  }
+  38% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(71, 153, 248));
+  }
+  40% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(75, 149, 250));
+  }
+  42% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(79, 145, 249));
+  }
+  44% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(83, 141, 248));
+  }
+  46% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(87, 137, 247));
+  }
+  48% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(91, 133, 246));
+  }
+  50% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(95, 129, 245));
+  }
+  52% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(93, 131, 243));
+  }
+  54% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(91, 133, 241));
+  }
+  56% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(89, 135, 239));
+  }
+  58% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(87, 137, 237));
+  }
+  60% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(85, 139, 235));
+  }
+  62% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(83, 141, 233));
+  }
+  64% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(81, 143, 231));
+  }
+  66% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(79, 145, 229));
+  }
+  68% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(77, 147, 227));
+  }
+  70% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(75, 149, 225));
+  }
+  72% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(73, 151, 223));
+  }
+  74% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(71, 153, 221));
+  }
+  76% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(69, 155, 219));
+  }
+  78% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(67, 157, 217));
+  }
+  80% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(65, 159, 215));
+  }
+  82% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(63, 161, 213));
+  }
+  84% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(61, 163, 211));
+  }
+  86% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(59, 165, 209));
+  }
+  88% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(57, 167, 207));
+  }
+  90% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(55, 169, 205));
+  }
+  92% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(51, 173, 201));
+  }
+  94% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(47, 177, 197));
+  }
+  96% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(39, 185, 191));
+  }
+  98% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(31, 193, 187));
+  }
+  100% {
+    background-image: radial-gradient(125% 125% at 50% 0%, rgb(2, 6, 23) 50%, rgb(25, 199, 184));
+  }
+}
+
+/* Hero Text Animation Classes */
+.hero-text-primary {
+  animation: hero-text-primary 20s ease-in-out infinite;
+}
+
+.hero-text-secondary {
+  animation: hero-text-secondary 20s ease-in-out infinite;
+}
+
+.hero-text-accent {
+  animation: hero-text-accent 20s ease-in-out infinite;
+}
+
+/* Animated Radial Gradient Class */
+.animate-radial-gradient {
+  animation: radial-gradient-shift 8s ease-in-out infinite;
+}
+
+/* Blob Animation for Moving Colorful Clouds */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 15s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: -2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: -4s;
+}
+
+.animation-delay-6000 {
+  animation-delay: -6s;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Timeline Styles */
+.timeline-dot {
+  position: relative;
+}
+
+.timeline-dot::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  animation: pulse-timeline 2s infinite;
+}
+
+@keyframes pulse-timeline {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* Timeline responsive adjustments */
+@media (max-width: 768px) {
+  .timeline-mobile {
+    border-left: 2px solid #e5e7eb;
+    padding-left: 1rem;
+    margin-left: 0.5rem;
+  }
+  
+  .timeline-mobile::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 1rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #3b82f6;
+  }
+}
+
+/* Project Button Styles with Higher Specificity */
+#projects .project-btn-code {
+  background-color: #4b5563;
+  color: white;
+  border: 1px solid #6b7280;
+}
+
+#projects .project-btn-code:hover {
+  background-color: #6b7280;
+  color: white;
+}
+
+#projects .project-btn-demo {
+  background-color: #0d9488;
+  color: white;
+  border: none;
+}
+
+#projects .project-btn-demo:hover {
+  background-color: #14b8a6;
+  color: white;
+}
+
+/* Auto-scroll animation for testimonials */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Navbar button styles */
+.navbar-btn {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.navbar-btn.active {
+  color: #14b8a6;
+  background-color: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.navbar-btn.inactive {
+  color: #9ca3af;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.navbar-btn.inactive:hover {
+  color: #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile navbar button styles */
+.navbar-btn-mobile {
+  position: relative;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: left;
+  transition: all 0.3s ease;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+.navbar-btn-mobile.active {
+  color: #14b8a6;
+  background-color: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.navbar-btn-mobile.inactive {
+  color: #9ca3af;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.navbar-btn-mobile.inactive:hover {
+  color: #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scroll Animation Classes */
+.scroll-animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate-fade-up.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-animate-fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate-fade-left.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate-fade-right.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate-scale.animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.scroll-animate-fade-in {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate-fade-in.animate-in {
+  opacity: 1;
+}
+
+.scroll-animate-bounce-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scroll-animate-bounce-up.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation delays for multiple items */
+.animate-delay-100 {
+  transition-delay: 0.1s;
+}
+
+.animate-delay-200 {
+  transition-delay: 0.2s;
+}
+
+.animate-delay-300 {
+  transition-delay: 0.3s;
+}
+
+.animate-delay-400 {
+  transition-delay: 0.4s;
+}
+
+.animate-delay-500 {
+  transition-delay: 0.5s;
+}
+
+.animate-delay-600 {
+  transition-delay: 0.6s;
+}

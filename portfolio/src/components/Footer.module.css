@@ -1,0 +1,148 @@
+/* Footer Component CSS Module */
+
+/* Main Container */
+.footerContainer {
+  background-color: rgb(17, 24, 39);
+  border-top: 1px solid rgb(31, 41, 55);
+}
+
+.footerWrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 16px;
+}
+
+/* Grid Layout */
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+/* Brand Section */
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.brandTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(45, 212, 191);
+}
+
+.brandDescription {
+  color: rgb(156, 163, 175);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Section Headings */
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: white;
+}
+
+/* Navigation Section */
+.navigationSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.navigationList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navigationItem {
+  color: rgb(156, 163, 175);
+  font-size: 14px;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.navigationItem:hover {
+  color: rgb(45, 212, 191);
+}
+
+/* Services Section */
+.servicesSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.serviceItem {
+  color: rgb(156, 163, 175);
+  font-size: 14px;
+}
+
+/* Contact Section */
+.contactSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgb(156, 163, 175);
+  transition: color 0.3s ease;
+  font-size: 14px;
+}
+
+.contactLink:hover {
+  color: rgb(45, 212, 191);
+}
+
+.contactIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Bottom Section */
+.bottomSection {
+  border-top: 1px solid rgb(31, 41, 55);
+  margin-top: 48px;
+  padding-top: 32px;
+}
+
+.bottomContent {
+  text-align: center;
+}
+
+.copyrightText {
+  color: rgb(156, 163, 175);
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .footerGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* CSS Custom Properties for theming */
+:root {
+  --color-background-footer: rgb(17, 24, 39);
+  --color-border-footer: rgb(31, 41, 55);
+  --color-primary: rgb(45, 212, 191);
+  --color-text-secondary: rgb(156, 163, 175);
+}

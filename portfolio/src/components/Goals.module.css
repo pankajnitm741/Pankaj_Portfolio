@@ -1,0 +1,245 @@
+/* Goals Component CSS Module - Using Hybrid Unit Approach */
+
+/* CSS Custom Properties for Reusability */
+:root {
+  --goals-section-bg: #0f172a;
+  --goals-section-padding: 80px 0; /* 20 * 4px = 80px for py-20 */
+  
+  /* Text Colors */
+  --goals-heading-color: #ffffff;
+  --goals-subtitle-color: #d1d5db;
+  --goals-card-text-color: #d1d5db;
+  --goals-card-heading-color: #ffffff;
+  
+  /* Card Colors */
+  --goals-card-bg: rgba(15, 23, 42, 0.5);
+  --goals-card-hover-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Spacing */
+  --goals-section-spacing: 16px;
+  --goals-heading-margin: 64px;
+  --goals-card-gap: 32px;
+  --goals-card-padding: 24px;
+  --goals-icon-margin: 16px;
+  --goals-title-margin: 16px;
+  
+  /* Animation Properties */
+  --goals-transition: all 0.3s ease;
+  --goals-blob-opacity-mobile: 0.3;
+  --goals-blob-opacity-desktop: 0.5;
+}
+
+/* Main Goals Section */
+.goalsSection {
+  padding: var(--goals-section-padding);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--goals-section-bg);
+}
+
+/* Floating Blobs Container */
+.blobsContainer {
+  position: absolute;
+  inset: 0;
+  opacity: var(--goals-blob-opacity-mobile);
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .blobsContainer {
+    opacity: var(--goals-blob-opacity-desktop);
+  }
+}
+
+/* Individual Blob Styles */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(48px); /* 3xl blur */
+  animation: blob 7s infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .blob {
+    mix-blend-mode: screen;
+  }
+}
+
+/* Blob Size Variants */
+.blobLarge {
+  top: 16.67%; /* top-1/6 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 256px; /* w-64 */
+  height: 256px; /* h-64 */
+  background: linear-gradient(to right, #34d399, #10b981, #0d9488); /* emerald-400 via green-500 to teal-600 */
+  opacity: 0.2;
+  animation-delay: 4s;
+}
+
+@media (min-width: 640px) {
+  .blobLarge {
+    width: 320px; /* sm:w-80 */
+    height: 320px; /* sm:h-80 */
+    opacity: 0.25;
+  }
+}
+
+.blobMedium {
+  bottom: 25%;
+  left: 16.67%; /* left-1/6 */
+  width: 224px; /* w-56 */
+  height: 224px; /* h-56 */
+  background: linear-gradient(to right, #60a5fa, #6366f1, #8b5cf6); /* blue-400 via indigo-500 to purple-600 */
+  opacity: 0.2;
+  animation-delay: 6s;
+}
+
+@media (min-width: 640px) {
+  .blobMedium {
+    width: 288px; /* sm:w-72 */
+    height: 288px; /* sm:h-72 */
+    opacity: 0.25;
+  }
+}
+
+.blobSmall {
+  top: 50%;
+  right: 20%; /* right-1/5 */
+  width: 192px; /* w-48 */
+  height: 192px; /* h-48 */
+  background: linear-gradient(to right, #fb7185, #ec4899, #d946ef); /* rose-400 via pink-500 to fuchsia-600 */
+  opacity: 0.15;
+  animation-delay: 2s;
+}
+
+@media (min-width: 640px) {
+  .blobSmall {
+    width: 256px; /* sm:w-64 */
+    height: 256px; /* sm:h-64 */
+    opacity: 0.2;
+  }
+}
+
+.blobExtra {
+  bottom: 16.67%; /* bottom-1/6 */
+  right: 33.33%; /* right-1/3 */
+  width: 160px; /* w-40 */
+  height: 160px; /* h-40 */
+  background: linear-gradient(to right, #fbbf24, #f59e0b, #dc2626); /* amber-400 via orange-500 to red-600 */
+  opacity: 0.15;
+  animation-delay: 0s;
+}
+
+@media (min-width: 640px) {
+  .blobExtra {
+    width: 224px; /* sm:w-56 */
+    height: 224px; /* sm:h-56 */
+    opacity: 0.2;
+  }
+}
+
+/* Content Container */
+.contentContainer {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Section Header */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--goals-heading-margin);
+  padding: 0 var(--goals-section-spacing);
+}
+
+.mainHeading {
+  font-size: 36px; /* text-4xl */
+  font-weight: 700; /* font-bold */
+  color: var(--goals-heading-color);
+  margin-bottom: var(--goals-section-spacing);
+}
+
+.subtitle {
+  font-size: 20px; /* text-xl */
+  color: var(--goals-subtitle-color);
+}
+
+/* Goals Grid */
+.goalsGrid {
+  display: grid;
+  gap: var(--goals-card-gap);
+  padding: 0 var(--goals-section-spacing);
+}
+
+@media (min-width: 768px) {
+  .goalsGrid {
+    grid-template-columns: repeat(3, 1fr); /* md:grid-cols-3 */
+  }
+}
+
+/* Goal Card */
+.goalCard {
+  text-align: center;
+  background-color: var(--goals-card-bg);
+  border-radius: 8px; /* rounded-lg */
+  padding: var(--goals-card-padding);
+  transition: var(--goals-transition);
+  border: 1px solid rgba(75, 85, 99, 0.3); /* Subtle border */
+}
+
+.goalCard:hover {
+  box-shadow: var(--goals-card-hover-shadow);
+  transform: translateY(-2px);
+}
+
+/* Goal Icon */
+.goalIcon {
+  font-size: 36px; /* text-4xl */
+  margin-bottom: var(--goals-icon-margin);
+  display: block;
+}
+
+/* Goal Title */
+.goalTitle {
+  font-size: 20px; /* text-xl */
+  font-weight: 700; /* font-bold */
+  color: var(--goals-card-heading-color);
+  margin-bottom: var(--goals-title-margin);
+}
+
+/* Goal Description */
+.goalDescription {
+  color: var(--goals-card-text-color);
+  line-height: 1.6; /* leading-relaxed */
+}
+
+/* Blob Animation Keyframes */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* Animation delay utilities */
+.animationDelay2000 {
+  animation-delay: 2s;
+}
+
+.animationDelay4000 {
+  animation-delay: 4s;
+}
+
+.animationDelay6000 {
+  animation-delay: 6s;
+}

@@ -1,0 +1,355 @@
+/* Contact Component CSS Module */
+
+/* Main Container */
+.contactContainer {
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-background, #0f172a);
+}
+
+/* Floating colorful blobs */
+.blob1 {
+  position: absolute;
+  top: 16.67%; /* top-1/6 */
+  left: 16.67%; /* left-1/6 */
+  width: 256px;
+  height: 256px;
+  background: linear-gradient(to right, rgb(244, 114, 182), rgb(244, 63, 94), rgb(220, 38, 38));
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(48px);
+  opacity: 0.15;
+  animation: blob 7s infinite;
+  animation-delay: 4s;
+}
+
+.blob2 {
+  position: absolute;
+  top: 50%;
+  right: 16.67%; /* right-1/6 */
+  width: 224px;
+  height: 224px;
+  background: linear-gradient(to right, rgb(129, 140, 248), rgb(168, 85, 247), rgb(244, 114, 182));
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(48px);
+  opacity: 0.15;
+  animation: blob 7s infinite;
+  animation-delay: 2s;
+}
+
+.blob3 {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 192px;
+  height: 192px;
+  background: linear-gradient(to right, rgb(45, 212, 191), rgb(34, 211, 238), rgb(59, 130, 246));
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(48px);
+  opacity: 0.10;
+  animation: blob 7s infinite;
+  animation-delay: 6s;
+}
+
+.blob4 {
+  position: absolute;
+  top: 25%;
+  right: 33.33%; /* right-1/3 */
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(to right, rgb(250, 204, 21), rgb(249, 115, 22), rgb(220, 38, 38));
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(48px);
+  opacity: 0.10;
+  animation: blob 7s infinite;
+}
+
+/* Section Wrapper */
+.sectionWrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(to right, rgb(45, 212, 191), rgb(59, 130, 246));
+  color: white;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid white;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.titleUnderline {
+  width: 96px;
+  height: 6px;
+  background: linear-gradient(to right, rgb(45, 212, 191), rgb(59, 130, 246));
+  margin: 0 auto;
+  border-radius: 9999px;
+}
+
+.subtitle {
+  color: rgb(209, 213, 219);
+  margin-top: 24px;
+  max-width: 512px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Content Grid */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Contact Information Section */
+.contactInfoSection {
+  border: 1px solid rgba(55, 65, 81, 0.5);
+  border-radius: 12px;
+  padding: 32px;
+  height: fit-content;
+  background-color: rgba(15, 23, 42, 0.5);
+  transition: all 0.3s ease;
+}
+
+.contactInfoSection:hover {
+  background-color: rgba(31, 41, 55, 0.8);
+}
+
+.contactInfoTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 32px;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contactIconWrapper {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(20, 184, 166, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactIcon {
+  width: 20px;
+  height: 20px;
+  color: rgb(45, 212, 191);
+}
+
+.contactItemContent h4 {
+  font-weight: 600;
+  color: rgb(45, 212, 191);
+  font-size: 14px;
+}
+
+.contactItemContent a,
+.contactItemContent span {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.contactItemContent a:hover {
+  color: rgb(45, 212, 191);
+}
+
+/* Status Section */
+.statusSection {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgb(55, 65, 81);
+}
+
+.statusTitle {
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.statusContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(74, 222, 128);
+  border-radius: 50%;
+}
+
+.statusText {
+  color: rgb(209, 213, 219);
+  font-size: 14px;
+}
+
+/* Contact Form Section */
+.contactFormSection {
+  border: 1px solid rgba(55, 65, 81, 0.5);
+  border-radius: 12px;
+  padding: 32px;
+  background-color: rgba(15, 23, 42, 0.5);
+  transition: all 0.3s ease;
+}
+
+.contactFormSection:hover {
+  background-color: rgba(31, 41, 55, 0.8);
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  display: block;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.required {
+  color: rgb(248, 113, 113);
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: rgb(55, 65, 81);
+  border: 1px solid rgb(75, 85, 99);
+  border-radius: 8px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: rgb(156, 163, 175);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: rgb(20, 184, 166);
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2);
+}
+
+.formTextarea {
+  resize: none;
+}
+
+.submitButton {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .blob1 {
+    width: 320px;
+    height: 320px;
+    opacity: 0.20;
+  }
+
+  .blob2 {
+    width: 288px;
+    height: 288px;
+    opacity: 0.20;
+  }
+
+  .blob3 {
+    width: 256px;
+    height: 256px;
+    opacity: 0.15;
+  }
+
+  .blob4 {
+    width: 224px;
+    height: 224px;
+    opacity: 0.15;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* CSS Custom Properties for theming */
+:root {
+  --color-background: #0f172a;
+  --color-primary: rgb(45, 212, 191);
+  --color-secondary: rgb(59, 130, 246);
+}

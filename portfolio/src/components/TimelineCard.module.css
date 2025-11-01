@@ -1,0 +1,198 @@
+/* TimelineCard Component CSS Module */
+
+/* Main Container */
+.timelineCard {
+  position: relative;
+  width: 100%;
+}
+
+/* Timeline Dot */
+.timelineDot {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: rgb(45, 212, 191);
+  border-radius: 50%;
+  border: 4px solid #000000;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  display: none; /* Hidden on mobile to match timeline */
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+/* Show timeline dot only when timeline line is visible */
+@media (min-width: 768px) {
+  .timelineDot {
+    display: flex;
+  }
+}
+
+/* Content Card Container */
+.cardContainer {
+  max-width: 448px; /* max-w-md */
+  position: relative;
+  margin: 0 auto; /* Center on mobile and small screens */
+  width: 100%;
+}
+
+.cardContainerLeft {
+  margin: 0 auto; /* Center on mobile */
+  padding-right: 0; /* No padding on mobile */
+}
+
+.cardContainerRight {
+  margin: 0 auto; /* Center on mobile */
+  padding-left: 0; /* No padding on mobile */
+}
+
+/* Desktop positioning - only when timeline is visible (tablet and up) */
+@media (min-width: 768px) {
+  .cardContainer {
+    margin: 0; /* Remove auto centering on desktop */
+  }
+  
+  .cardContainerLeft {
+    margin-right: auto;
+    margin-left: 0;
+    padding-right: 100px; /* Increased padding for better spacing from timeline */
+  }
+
+  .cardContainerRight {
+    margin-left: auto;
+    margin-right: 0;
+    padding-left: 100px; /* Increased padding for better spacing from timeline */
+  }
+}
+
+/* For very small screens, ensure full centering */
+@media (max-width: 480px) {
+  .cardContainer {
+    max-width: 100%;
+    padding: 0 16px; /* Add some side padding on very small screens */
+  }
+  
+  .cardContainerLeft,
+  .cardContainerRight {
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+/* Card Content */
+.card {
+  border: 1px solid rgb(55, 65, 81);
+  border-radius: 12px;
+  padding: 24px;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgb(45, 212, 191);
+  box-shadow: 0 10px 15px -3px rgba(45, 212, 191, 0.1);
+}
+
+/* Header Section */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  line-height: 1.3;
+}
+
+.company {
+  font-size: 18px;
+  color: rgb(45, 212, 191);
+  font-weight: 600;
+}
+
+.badgeContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.periodBadge {
+  display: inline-block;
+  background-color: rgba(20, 184, 166, 0.2);
+  color: rgb(45, 212, 191);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.currentBadge {
+  display: inline-block;
+  background-color: rgba(34, 197, 94, 0.2);
+  color: rgb(74, 222, 128);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Description */
+.description {
+  color: rgb(209, 213, 219);
+  margin-bottom: 24px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Achievements */
+.achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.achievementItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.achievementDot {
+  width: 6px;
+  height: 6px;
+  background-color: rgb(45, 212, 191);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.achievementText {
+  color: rgb(209, 213, 219);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* CSS Custom Properties for theming */
+:root {
+  --timelinecard-primary-color: rgb(45, 212, 191);
+  --timelinecard-bg-color: rgba(15, 23, 42, 0.5);
+  --timelinecard-border-color: rgb(55, 65, 81);
+  --timelinecard-text-color: rgb(209, 213, 219);
+}

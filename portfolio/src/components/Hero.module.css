@@ -1,0 +1,435 @@
+/* Hero Section Styles */
+.heroSection {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero Content */
+.heroContent {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Keep vh for full-screen layouts */
+  padding: 0 16px; /* Convert 1rem to px for consistent spacing */
+  text-align: center;
+  padding-top: 64px; /* Convert 4rem to px */
+  padding-bottom: 48px; /* Add bottom padding for social icons gap */
+}
+
+/* Gradient Layer */
+.gradientLayer {
+  position: absolute;
+  inset: 0;
+  /* CSS Custom Properties for gradient animation */
+  --gradient-base: rgb(2, 6, 23);
+  --gradient-position: 125% 125% at 50% 0%;
+  --gradient-stop: 50%;
+  /* Use the radial gradient animation */
+  animation: radialGradientShift 8s ease-in-out infinite;
+}
+
+.starsContainer {
+  position: absolute;
+  inset: 0;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: starPulse 3s ease-in-out infinite;
+}
+
+.microStar {
+  position: absolute;
+  background-color: rgb(165, 243, 252); /* cyan-200 */
+  border-radius: 50%;
+  width: 1px;
+  height: 1px;
+  animation: starPulse 2s ease-in-out infinite;
+}
+
+/* Floating Blobs */
+.blobsContainer {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+}
+
+@media (min-width: 640px) {
+  .blobsContainer {
+    opacity: 1;
+  }
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(48px); /* Convert 3rem to px for precise control */
+  /* Use the blob animation */
+  animation: blobAnimation 15s ease-in-out infinite;
+}
+
+.blobLarge {
+  top: 25%;
+  right: 25%;
+  width: 288px; /* Convert 18rem to px */
+  height: 288px;
+  background: linear-gradient(to right, rgb(45, 212, 191), rgb(6, 182, 212), rgb(37, 99, 235));
+  opacity: 0.2;
+  animation-delay: -4s;
+}
+
+@media (min-width: 640px) {
+  .blobLarge {
+    width: 384px; /* Convert 24rem to px */
+    height: 384px;
+    opacity: 0.25;
+  }
+}
+
+.blobMedium {
+  bottom: 33.333333%;
+  left: 33.333333%;
+  width: 288px; /* Convert 18rem to px */
+  height: 288px;
+  background: linear-gradient(to right, rgb(45, 212, 191), rgb(6, 182, 212), rgb(37, 99, 235));
+  opacity: 0.2;
+}
+
+@media (min-width: 640px) {
+  .blobMedium {
+    width: 384px; /* Convert 24rem to px */
+    height: 384px;
+    opacity: 0.25;
+  }
+}
+
+.blobSmall {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 192px; /* Convert 12rem to px */
+  height: 192px;
+  background: linear-gradient(to right, rgb(192, 132, 252), rgb(236, 72, 153), rgb(239, 68, 68));
+  opacity: 0.15;
+  animation-delay: -2s;
+}
+
+@media (min-width: 640px) {
+  .blobSmall {
+    width: 256px; /* Convert 16rem to px */
+    height: 256px;
+    opacity: 0.2;
+  }
+}
+
+.blobExtra {
+  top: 33.333333%;
+  left: 25%;
+  width: 224px; /* Convert 14rem to px */
+  height: 224px;
+  background: linear-gradient(to right, rgb(167, 139, 250), rgb(147, 51, 234), rgb(79, 70, 229));
+  opacity: 0.15;
+  animation-delay: -6s;
+}
+
+@media (min-width: 640px) {
+  .blobExtra {
+    width: 320px; /* Convert 20rem to px */
+    height: 320px;
+    opacity: 0.2;
+  }
+}
+
+/* Hero Content */
+.heroContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Keep vh for full-screen layouts */
+  padding: 0 16px; /* Convert 1rem to px for consistent spacing */
+  text-align: center;
+  padding-top: 64px; /* Convert 4rem to px */
+}
+
+.greeting {
+  font-size: 30px; /* Convert 1.875rem to px (1.875 * 16 = 30px) */
+  font-weight: 500;
+  margin-bottom: 16px; /* Convert 1rem to px */
+}
+
+@media (min-width: 768px) {
+  .greeting {
+    font-size: 36px; /* Convert 2.25rem to px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .greeting {
+    font-size: 48px; /* Convert 3rem to px */
+  }
+}
+
+.mainHeading {
+  font-weight: 700;
+  margin-bottom: 32px; /* Convert 2rem to px */
+  line-height: 1.25;
+  background: linear-gradient(to right, rgb(45, 212, 191), rgb(34, 211, 238), rgb(59, 130, 246));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: clamp(36px, 8vw, 72px); /* Keep vw for responsive text, convert rem to px */
+}
+
+.descriptionBox {
+  background: linear-gradient(to right, rgba(20, 184, 166, 0.1), rgba(59, 130, 246, 0.1));
+  border: 1px solid rgba(20, 184, 166, 0.2); /* Keep 1px border */
+  border-radius: 12px; /* Convert 0.75rem to px */
+  padding: 24px; /* Convert 1.5rem to px */
+  max-width: 768px; /* Convert 48rem to px */
+  margin-bottom: 48px; /* Convert 3rem to px */
+  backdrop-filter: blur(4px); /* Keep 4px blur */
+}
+
+.description {
+  font-size: 18px; /* Convert 1.125rem to px */
+  line-height: 1.75; /* Keep unitless line-height */
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 20px; /* Convert 1.25rem to px */
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Convert 1rem to px */
+  margin-bottom: 64px; /* Convert 4rem to px */
+}
+
+@media (min-width: 640px) {
+  .buttonContainer {
+    flex-direction: row;
+  }
+}
+
+.socialContainer {
+  display: flex;
+  gap: 24px; /* Convert 1.5rem to px */
+  margin-bottom: 40px; /* Ensure bottom gap from section end */
+}
+
+.socialLink {
+  width: 48px; /* Convert 3rem to px */
+  height: 48px; /* Convert 3rem to px */
+  background-color: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(4px); /* Keep 4px blur */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(209, 213, 219);
+  transition: all 0.3s ease; /* Keep 0.3s timing */
+}
+
+.socialLink:hover {
+  color: white;
+  background-color: rgba(55, 65, 81, 0.5);
+}
+
+/* Hero content styles continue here... */
+
+/* Keyframes Animations */
+@keyframes radialGradientShift {
+  0% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(25, 199, 184));
+  }
+  2% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(27, 197, 185));
+  }
+  4% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(29, 195, 186));
+  }
+  6% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(31, 193, 187));
+  }
+  8% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(33, 191, 188));
+  }
+  10% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(35, 189, 189));
+  }
+  12% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(37, 187, 195));
+  }
+  14% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(39, 185, 200));
+  }
+  16% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(41, 183, 205));
+  }
+  18% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(43, 181, 210));
+  }
+  20% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(45, 179, 215));
+  }
+  22% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(47, 177, 220));
+  }
+  24% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(49, 175, 225));
+  }
+  26% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(51, 173, 230));
+  }
+  28% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(53, 171, 235));
+  }
+  30% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(55, 169, 240));
+  }
+  32% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(59, 165, 242));
+  }
+  34% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(63, 161, 244));
+  }
+  36% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(67, 157, 246));
+  }
+  38% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(71, 153, 248));
+  }
+  40% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(75, 149, 250));
+  }
+  42% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(79, 145, 249));
+  }
+  44% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(83, 141, 248));
+  }
+  46% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(87, 137, 247));
+  }
+  48% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(91, 133, 246));
+  }
+  50% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(95, 129, 245));
+  }
+  52% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(93, 131, 243));
+  }
+  54% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(91, 133, 241));
+  }
+  56% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(89, 135, 239));
+  }
+  58% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(87, 137, 237));
+  }
+  60% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(85, 139, 235));
+  }
+  62% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(83, 141, 233));
+  }
+  64% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(81, 143, 231));
+  }
+  66% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(79, 145, 229));
+  }
+  68% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(77, 147, 227));
+  }
+  70% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(75, 149, 225));
+  }
+  72% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(73, 151, 223));
+  }
+  74% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(71, 153, 221));
+  }
+  76% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(69, 155, 219));
+  }
+  78% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(67, 157, 217));
+  }
+  80% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(65, 159, 215));
+  }
+  82% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(63, 161, 213));
+  }
+  84% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(61, 163, 211));
+  }
+  86% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(59, 165, 209));
+  }
+  88% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(57, 167, 207));
+  }
+  90% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(55, 169, 205));
+  }
+  92% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(53, 171, 203));
+  }
+  94% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(51, 173, 201));
+  }
+  96% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(49, 175, 199));
+  }
+  98% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(47, 177, 197));
+  }
+  100% {
+    background-image: radial-gradient(var(--gradient-position), var(--gradient-base) var(--gradient-stop), rgb(25, 199, 184));
+  }
+}
+
+@keyframes starPulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes blobAnimation {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}

@@ -1,0 +1,103 @@
+/* Button Component CSS Module - Using Hybrid Unit Approach */
+
+/* CSS Custom Properties for Reusability */
+:root {
+  --button-border-radius: 8px;
+  --button-transition: all 0.3s ease;
+  --button-focus-ring: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  
+  /* Primary Theme Colors with Gradients */
+  --button-primary-bg: linear-gradient(135deg, #14b8a6 0%, #3b82f6 100%);
+  --button-primary-bg-hover: linear-gradient(135deg, #0d9488 0%, #2563eb 100%);
+  --button-primary-text: #ffffff;
+  --button-primary-border: transparent;
+  --button-primary-border-hover: transparent;
+  
+  /* Secondary Theme Colors */
+  --button-secondary-bg: transparent;
+  --button-secondary-bg-hover: rgba(20, 184, 166, 0.1);
+  --button-secondary-text: #14b8a6;
+  --button-secondary-text-hover: #0d9488;
+  --button-secondary-border: #14b8a6;
+  --button-secondary-border-hover: #0d9488;
+}
+
+/* Base Button Styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: var(--button-border-radius);
+  transition: var(--button-transition);
+  border: 1px solid;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.button:focus {
+  box-shadow: var(--button-focus-ring);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Size Variants - Using px for precise control */
+.small {
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.medium {
+  padding: 12px 24px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.large {
+  padding: 16px 32px;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+/* Variant Styles */
+.primary {
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border-color: var(--button-primary-border);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--button-primary-bg-hover);
+  border-color: var(--button-primary-border-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+}
+
+.secondary {
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border-color: var(--button-secondary-border);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--button-secondary-bg-hover);
+  color: var(--button-secondary-text-hover);
+  border-color: var(--button-secondary-border-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.2);
+}
+
+/* Icon Spacing */
+.iconLeft {
+  margin-right: 8px;
+}
+
+.iconRight {
+  margin-left: 8px;
+}
