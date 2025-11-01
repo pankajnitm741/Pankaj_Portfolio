@@ -1,10 +1,139 @@
-import { HiMail, HiPaperAirplane } from 'react-icons/hi'
+import { useState } from 'react'
+import { HiMail, HiPaperAirplane, HiCheckCircle, HiExclamationCircle } from 'react-icons/hi'
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 import Button from './Button'
 import { ScrollAnimationWrapper } from './ScrollAnimationWrapper'
 import styles from './Contact.module.css'
 
+interface FormData {
+  fullName: string
+  email: string
+  subject: string
+  message: string
+}
+
+interface FormStatus {
+  type: 'success' | 'error' | null
+  message: string
+}
+
 export default function Contact() {
+  const [formData, setFormData] = useState<FormData>({
+    fullName: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formStatus, setFormStatus] = useState<FormStatus>({ type: null, message: '' })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+    // Clear status when user starts typing
+    if (formStatus.type) {
+      setFormStatus({ type: null, message: '' })
+    }
+  }
+
+  const validateForm = (): boolean => {
+    if (!formData.fullName.trim()) {
+      setFormStatus({ type: 'error', message: 'Please enter your full name' })
+      return false
+    }
+    if (!formData.email.trim()) {
+      setFormStatus({ type: 'error', message: 'Please enter your email address' })
+      return false
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setFormStatus({ type: 'error', message: 'Please enter a valid email address' })
+      return false
+    }
+    if (!formData.subject.trim()) {
+      setFormStatus({ type: 'error', message: 'Please enter a subject' })
+      return false
+    }
+    if (!formData.message.trim()) {
+      setFormStatus({ type: 'error', message: 'Please enter your message' })
+      return false
+    }
+    if (formData.message.trim().length < 10) {
+      setFormStatus({ type: 'error', message: 'Message must be at least 10 characters long' })
+      return false
+    }
+    return true
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!validateForm()) return
+
+    setIsSubmitting(true)
+    setFormStatus({ type: null, message: '' })
+
+    try {
+      // EmailJS configuration from environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      // Check if EmailJS is configured
+      if (!serviceId || !templateId || !publicKey || 
+          serviceId === 'your_service_id_here' || 
+          templateId === 'your_template_id_here' || 
+          publicKey === 'your_public_key_here') {
+        
+        // Fallback: Simulate sending email (for demo purposes)
+        console.log('EmailJS not configured, simulating email send with form data:', formData)
+        await new Promise(resolve => setTimeout(resolve, 2000))
+        
+        setFormStatus({ 
+          type: 'success', 
+          message: 'Thank you! Your message has been received. Since this is a demo, the email simulation was successful. In production, this would send an actual email via EmailJS.' 
+        })
+      } else {
+        // Real EmailJS sending
+        const templateParams = {
+          from_name: formData.fullName,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Pankaj Goyal',
+          reply_to: formData.email
+        }
+
+        await emailjs.send(serviceId, templateId, templateParams, publicKey)
+        
+        setFormStatus({ 
+          type: 'success', 
+          message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!' 
+        })
+      }
+
+      // Reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        subject: '',
+        message: ''
+      })
+
+    } catch (error) {
+      console.error('Error sending email:', error)
+      setFormStatus({ 
+        type: 'error', 
+        message: 'Sorry, there was an error sending your message. Please try again or contact me directly via email.' 
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
   return (
     <section id="contact" className={styles.contactContainer}>
       {/* Floating colorful blobs */}
@@ -104,17 +233,33 @@ export default function Contact() {
                 Send Me a Message
               </h3>
 
-              <form className={styles.form}>
+              <form className={styles.form} onSubmit={handleSubmit}>
+                {/* Status Message */}
+                {formStatus.type && (
+                  <div className={`${styles.statusMessage} ${styles[formStatus.type]}`}>
+                    {formStatus.type === 'success' ? (
+                      <HiCheckCircle className={styles.statusIcon} />
+                    ) : (
+                      <HiExclamationCircle className={styles.statusIcon} />
+                    )}
+                    <span>{formStatus.message}</span>
+                  </div>
+                )}
+
                 <div className={styles.formGroup}>
                   <label htmlFor="fullName" className={styles.formLabel}>
                     Full Name <span className={styles.required}>*</span>
                   </label>
                   <input 
                     id="fullName" 
+                    name="fullName"
                     type="text" 
                     required 
+                    value={formData.fullName}
+                    onChange={handleInputChange}
                     placeholder="Your Name"
                     className={styles.formInput}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -124,10 +269,14 @@ export default function Contact() {
                   </label>
                   <input 
                     id="email" 
+                    name="email"
                     type="email" 
                     required 
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="youremail@example.com"
                     className={styles.formInput}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -137,10 +286,14 @@ export default function Contact() {
                   </label>
                   <input 
                     id="subject" 
+                    name="subject"
                     type="text" 
                     required 
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     placeholder="Subject about cooperation opportunities..."
                     className={styles.formInput}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -150,10 +303,14 @@ export default function Contact() {
                   </label>
                   <textarea 
                     id="message" 
+                    name="message"
                     rows={6} 
                     required 
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Your detailed message here..."
                     className={styles.formTextarea}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -161,9 +318,19 @@ export default function Contact() {
                   type="submit" 
                   variant="primary"
                   className={styles.submitButton}
+                  disabled={isSubmitting}
                 >
-                  <HiPaperAirplane className="w-5 h-5" />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <div className={styles.spinner}></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <HiPaperAirplane className="w-5 h-5" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
             </div>
